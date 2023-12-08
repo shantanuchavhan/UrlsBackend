@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table
 from databases import Database
 import random
-from faker import Faker
+
 
 
 
