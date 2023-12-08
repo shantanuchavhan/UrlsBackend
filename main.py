@@ -66,35 +66,35 @@ async def get_products():
     return await database.fetch_all(query)
 
 
-import random
+# import random
 
-def generate_random_data(count):
-    data = []
-    for i in range(count):
-        random_article_no = random.randint(1, 10000000000)
-        random_product_name = f"Product {i + 1}"
-        random_in_price = random.randint(1, 100000)
-        random_price = random.randint(1, 2000000)
-        random_unit = random.choice(['Piece', 'Kg', 'Liter'])
-        random_in_stock = random.randint(1, 100)
-        random_description = f"Description for Product {i + 1}"
+# def generate_random_data(count):
+#     data = []
+#     for i in range(count):
+#         random_article_no = random.randint(1, 10000000000)
+#         random_product_name = f"Product {i + 1}"
+#         random_in_price = random.randint(1, 100000)
+#         random_price = random.randint(1, 2000000)
+#         random_unit = random.choice(['Piece', 'Kg', 'Liter'])
+#         random_in_stock = random.randint(1, 100)
+#         random_description = f"Description for Product {i + 1}"
 
-        data.append(
-            {
-                "ArticleNo":random_article_no,
-                "Product": random_product_name,
-                "inPrice": random_in_price,
-                "Price": random_price,
-                "Unit":  random_unit,
-                "inStock": random_in_stock,
-                "Description": random_description 
-            }
-        )
-    return data
+#         data.append(
+#             {
+#                 "ArticleNo":random_article_no,
+#                 "Product": random_product_name,
+#                 "inPrice": random_in_price,
+#                 "Price": random_price,
+#                 "Unit":  random_unit,
+#                 "inStock": random_in_stock,
+#                 "Description": random_description 
+#             }
+#         )
+#     return data
 
-# Example usage:
-random_data = generate_random_data(5)
-print(random_data)
+# # Example usage:
+# random_data = generate_random_data(5)
+# print(random_data)
 
 
 
@@ -124,7 +124,7 @@ async def root():
 
 @app.get("/terms")
 async def get_terms():
-    return {"message": "Your terms message here"}
+    return {"message": "VED Å klikke på Fakturere Nå så velger dere å laste ned ifølge den informasjon som dere har lagt inn og teksten på last ned siden og vilkårene her, og aksepterer samtidig vilkårene her.Dere kan bruke programmet GRATIS i 14 dager.LettFaktura er så lett og selvforklarende at sjansen for at du vil komme til å trenge support er minimal, men hvis du skulle trenge support, så er vi her for deg, med vårt kontor bemannet større delen av døgnet. Etter prøveperioden så fortsetter abonnementet og koster 99 kroner eks. mva per måned, som faktureres årlig. Hvis du ikke ønsker å beholde programmet, så er det bare til å avbryte prøveperioden ved å gi beskjed innen 14 dager fra nedlasting.Dere har selvfølgelig rett til å avslutte bruken av programmet uten kostnad, ved å gi oss beskjed per email innen 14 dager fra nedlasting, om at dere ikke ønsker å fortsette med programmet, og betaler da selvfølgelig ikke heller noe"}
 
 @app.get("/us")
 async def get_us():
