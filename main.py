@@ -7,7 +7,7 @@ import random
 
 
 
-DATABASE_URL = "postgresql://postgres:Shantanu8983@@127.0.0.1:5432/UrlTask"
+DATABASE_URL = "postgresql://postgres:Shantanu8983%40@127.0.0.1:5432/UrlTask"
 
 
 database = Database(DATABASE_URL)
