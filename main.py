@@ -7,21 +7,21 @@ from faker import Faker
 
 DATABASE_URL = "postgresql://postgres:Shantanu8983@@localhost:5432/UrlTask"
 
-# database = Database(DATABASE_URL)
-# metadata = MetaData()
+database = Database(DATABASE_URL)
+metadata = MetaData()
 
-# products = Table(
-#     "products",
-#     metadata,
-#     Column("id", Integer, primary_key=True),
-#     Column("ArticleNo",Integer ),  # Changed to use underscore instead of /
-#     Column("Product", String),
-#     Column("inPrice", Integer),
-#     Column("Price", Integer),
-#     Column("Unit", String),
-#     Column("inStock", Integer),
-#     Column("Description", String),
-# )
+products = Table(
+    "products",
+    metadata,
+    Column("id", Integer, primary_key=True),
+    Column("ArticleNo",Integer ),  # Changed to use underscore instead of /
+    Column("Product", String),
+    Column("inPrice", Integer),
+    Column("Price", Integer),
+    Column("Unit", String),
+    Column("inStock", Integer),
+    Column("Description", String),
+)
 
 
 
@@ -38,50 +38,22 @@ app.add_middleware(
 )
 
 # Function to initialize database connection pool
-# async def startup():
-#     await database.connect()
+async def startup():
+    await database.connect()
 
 # Function to close database connection pool
-# async def shutdown():
-#     await database.disconnect()
+async def shutdown():
+    await database.disconnect()
 
-# # Event handlers for startup and shutdown
-# app.add_event_handler("startup", startup)
-# app.add_event_handler("shutdown", shutdown)
-
-# # Function to insert product into the database
-# async def insert_product(product_data):
-#     query = products.insert().values(product_data)
-#     return await database.execute(query)
-
-# fake = Faker()
+# Event handlers for startup and shutdown
+app.add_event_handler("startup", startup)
+app.add_event_handler("shutdown", shutdown)
 
 
 
-
-# async def get_products():
-#     query = products.select()
-#     return await database.fetch_all(query)
-
-
-
-
-# # Route to add product
-# @app.post("/add-product")
-# async def add_product(product_data: dict):
-#     product_id = await insert_product(product_data)
-#     return {"message": f"Product added with ID: {product_id}"}
-
-# # Generate 20 product data
-# async def add_products(product_data: dict):
-#     product_id = await insert_product(product_data)
-#     return {"message": f"Product added with ID: {product_id}"}
-
-
-
-
-
-
+async def get_products():
+    query = products.select()
+    return await database.fetch_all(query)
 
 
 
@@ -98,24 +70,14 @@ async def get_us():
     return {"message": "We that dispose of and drive this homepage and that also sell the programs that are sold on this homepage are: Lettfaktura Ltd, registered in Ireland with company number 638535. Registered office is in Co. Laois, Ireland.We hope that you will have much joy and use of our homepage.Have a still great day!"}
 
 
-# @app.get("/getProducts")
-# async def get_products_route():
-#     products_data = await get_products()
-#     converted_list = [
-#             [product["ArticleNo"], product["Product"], product["inPrice"], product["Price"],
-#             product["Unit"], product["inStock"], product["Description"]]
-#             for product in products_data
-#         ]
-#     print(converted_list,"converted_list")
-#     return {"message": products_data}
-
-
-@app.get("/getAllProduct")
-async def root():
-    data=[{"id":63,"ArticleNo":7465000852,"Product":"Product 1","inPrice":93881,"Price":632235,"Unit":"Kg","inStock":58,"Description":"Description for Product 1"},{"id":64,"ArticleNo":5752106165,"Product":"Product 2","inPrice":46280,"Price":465899,"Unit":"Liter","inStock":47,"Description":"Description for Product 2"},{"id":65,"ArticleNo":2422695555,"Product":"Product 3","inPrice":42880,"Price":1171347,"Unit":"Liter","inStock":79,"Description":"Description for Product 3"},{"id":66,"ArticleNo":2581987276,"Product":"Product 4","inPrice":98764,"Price":867344,"Unit":"Liter","inStock":16,"Description":"Description for Product 4"},{"id":67,"ArticleNo":6233241536,"Product":"Product 5","inPrice":70659,"Price":1939737,"Unit":"Liter","inStock":50,"Description":"Description for Product 5"},{"id":68,"ArticleNo":1571769736,"Product":"Product 6","inPrice":71091,"Price":184941,"Unit":"Liter","inStock":68,"Description":"Description for Product 6"},{"id":69,"ArticleNo":8252392448,"Product":"Product 7","inPrice":12173,"Price":741082,"Unit":"Kg","inStock":4,"Description":"Description for Product 7"},{"id":70,"ArticleNo":4173937893,"Product":"Product 8","inPrice":66715,"Price":774322,"Unit":"Kg","inStock":85,"Description":"Description for Product 8"},{"id":71,"ArticleNo":1733876550,"Product":"Product 9","inPrice":26408,"Price":133300,"Unit":"Kg","inStock":65,"Description":"Description for Product 9"},{"id":72,"ArticleNo":4876386493,"Product":"Product 10","inPrice":54156,"Price":1706394,"Unit":"Piece","inStock":89,"Description":"Description for Product 10"},{"id":73,"ArticleNo":2800441092,"Product":"Product 11","inPrice":12397,"Price":1400929,"Unit":"Kg","inStock":54,"Description":"Description for Product 11"},{"id":74,"ArticleNo":9200764438,"Product":"Product 12","inPrice":1280,"Price":524818,"Unit":"Kg","inStock":70,"Description":"Description for Product 12"},{"id":75,"ArticleNo":9619323085,"Product":"Product 13","inPrice":85612,"Price":1187133,"Unit":"Kg","inStock":69,"Description":"Description for Product 13"},{"id":76,"ArticleNo":9080206171,"Product":"Product 14","inPrice":65100,"Price":460234,"Unit":"Piece","inStock":25,"Description":"Description for Product 14"},{"id":77,"ArticleNo":6699514855,"Product":"Product 15","inPrice":81104,"Price":1044044,"Unit":"Kg","inStock":11,"Description":"Description for Product 15"},{"id":78,"ArticleNo":9272130698,"Product":"Product 16","inPrice":12225,"Price":462301,"Unit":"Piece","inStock":19,"Description":"Description for Product 16"},{"id":79,"ArticleNo":2571472752,"Product":"Product 17","inPrice":7019,"Price":1380450,"Unit":"Kg","inStock":15,"Description":"Description for Product 17"},{"id":80,"ArticleNo":8620922048,"Product":"Product 18","inPrice":55420,"Price":1840476,"Unit":"Liter","inStock":9,"Description":"Description for Product 18"},{"id":81,"ArticleNo":4521660667,"Product":"Product 19","inPrice":85446,"Price":740732,"Unit":"Piece","inStock":1,"Description":"Description for Product 19"},{"id":82,"ArticleNo":7853266096,"Product":"Product 20","inPrice":92019,"Price":1027648,"Unit":"Liter","inStock":47,"Description":"Description for Product 20"}]
+@app.get("/getProducts")
+async def get_products_route():
+    products_data = await get_products()
     converted_list = [
             [product["ArticleNo"], product["Product"], product["inPrice"], product["Price"],
             product["Unit"], product["inStock"], product["Description"]]
-            for product in data
+            for product in products_data
         ]
+    print(converted_list,"converted_list")
     return {"message": converted_list}
+    
