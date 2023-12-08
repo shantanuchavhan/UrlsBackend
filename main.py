@@ -5,10 +5,13 @@ from databases import Database
 import random
 from faker import Faker
 
+
+
 DATABASE_URL = "postgresql://postgres:Shantanu8983@@localhost:5432/UrlTask"
 
 database = Database(DATABASE_URL)
 metadata = MetaData()
+
 
 products = Table(
     "products",
@@ -45,16 +48,13 @@ async def startup():
 async def shutdown():
     await database.disconnect()
 
+
 # Event handlers for startup and shutdown
 app.add_event_handler("startup", startup)
 app.add_event_handler("shutdown", shutdown)
 
-# Function to insert product into the database
-async def insert_product(product_data):
-    query = products.insert().values(product_data)
-    return await database.execute(query)
 
-fake = Faker()
+
 
 
 
@@ -76,64 +76,55 @@ async def get_products():
     }
 
 
-import random
-
-def generate_random_data(count):
-    data = []
-    for i in range(count):
-        random_article_no = random.randint(1, 10000000000)
-        random_product_name = f"Product {i + 1}"
-        random_in_price = random.randint(1, 100000)
-        random_price = random.randint(1, 2000000)
-        random_unit = random.choice(['Piece', 'Kg', 'Liter'])
-        random_in_stock = random.randint(1, 100)
-        random_description = f"Description for Product {i + 1}"
-
-        data.append(
-            {
-                "ArticleNo":random_article_no,
-                "Product": random_product_name,
-                "inPrice": random_in_price,
-                "Price": random_price,
-                "Unit":  random_unit,
-                "inStock": random_in_stock,
-                "Description": random_description 
-            }
-        )
-    return data
-
-# Example usage:
-random_data = generate_random_data(5)
-print(random_data)
 
 
 
 
-# Route to add product
-@app.post("/add-product")
-async def add_product(product_data: dict):
-    product_id = await insert_product(product_data)
-    return {"message": f"Product added with ID: {product_id}"}
+
+
+# async def insert_product(product_data):
+#     query = products.insert().values(product_data)
+#     return await database.execute(query)
+# fake = Faker()
+# def generate_random_data(count):
+#     data = []
+#     for i in range(count):
+#         random_article_no = random.randint(1, 10000000000)
+#         random_product_name = f"Product {i + 1}"
+#         random_in_price = random.randint(1, 100000)
+#         random_price = random.randint(1, 2000000)
+#         random_unit = random.choice(['Piece', 'Kg', 'Liter'])
+#         random_in_stock = random.randint(1, 100)
+#         random_description = f"Description for Product {i + 1}"
+
+#         data.append(
+#             {
+#                 "ArticleNo":random_article_no,
+#                 "Product": random_product_name,
+#                 "inPrice": random_in_price,
+#                 "Price": random_price,
+#                 "Unit":  random_unit,
+#                 "inStock": random_in_stock,
+#                 "Description": random_description 
+#             }
+#         )
+#     return data
+
 
 # Generate 20 product data
-async def add_products(product_data: dict):
-    product_id = await insert_product(product_data)
-    return {"message": f"Product added with ID: {product_id}"}
-
-
-
-
-
+# async def add_products(product_data: dict):
+#     product_id = await insert_product(product_data)
+#     return {"message": f"Product added with ID: {product_id}"}
+ # data = generate_random_data(20)
+    # for i in data:
+    #     out=await add_products(i) 
+    #     print(out,"out")
 
 
 
 
 @app.get("/")
 async def root():
-    # data = generate_random_data(20)
-    # for i in data:
-    #     out=await add_products(i) 
-    #     print(out,"out")
     return {"message": "Hello World"}
 
 @app.get("/terms")
@@ -144,9 +135,6 @@ async def get_terms():
 async def get_us():
     return {"message": "Your US message here"}
 
-@app.get("/ok")
-async def get_ok():
-    return {"message": "hii pro level"}
 
 @app.get("/getProducts")
 async def get_products_route():
