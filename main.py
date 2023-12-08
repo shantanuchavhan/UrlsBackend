@@ -129,11 +129,11 @@ async def root():
 
 @app.get("/terms")
 async def get_terms():
-    return {"message": "Your terms message here"}
+    return {"message": "VED Å klikke på Fakturere Nå så velger dere å laste ned ifølge den informasjon som dere har lagt inn og teksten på last ned siden og vilkårene her, og aksepterer samtidig vilkårene her."}
 
 @app.get("/us")
 async def get_us():
-    return {"message": "Your US message here"}
+    return {"message": "VED Å klikke på Fakturere Nå så velger dere å laste ned ifølge den informasjon som dere har lagt inn og teksten på last ned siden og vilkårene her, og aksepterer samtidig vilkårene her."}
 
 
 @app.get("/getProducts")
