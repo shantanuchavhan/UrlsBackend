@@ -70,19 +70,10 @@ async def get_us():
     return {"message": "We that dispose of and drive this homepage and that also sell the programs that are sold on this homepage are: Lettfaktura Ltd, registered in Ireland with company number 638535. Registered office is in Co. Laois, Ireland.We hope that you will have much joy and use of our homepage.Have a still great day!"}
 
 
+
+
+
 @app.get("/getAllProducts")
-async def get_products_route():
-    products_data = await get_products()
-    converted_list = [
-            [product["ArticleNo"], product["Product"], product["inPrice"], product["Price"],
-            product["Unit"], product["inStock"], product["Description"]]
-            for product in products_data
-        ]
-    print(converted_list,"converted_list")
-    return {"message": converted_list}
-
-
-@app.get("/getAlllProducts")
 async def get_products_route():
     products_data = await get_products()
     converted_list = [
