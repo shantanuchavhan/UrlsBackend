@@ -80,4 +80,16 @@ async def get_products_route():
         ]
     print(converted_list,"converted_list")
     return {"message": converted_list}
+
+
+@app.get("/getAlllProducts")
+async def get_products_route():
+    products_data = await get_products()
+    converted_list = [
+            [product["ArticleNo"], product["Product"], product["inPrice"], product["Price"],
+            product["Unit"], product["inStock"], product["Description"]]
+            for product in products_data
+        ]
+    print(converted_list,"converted_list")
+    return {"message": converted_list}
     
