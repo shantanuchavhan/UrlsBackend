@@ -7,21 +7,21 @@ from faker import Faker
 
 DATABASE_URL = "postgresql://postgres:Shantanu8983@@localhost:5432/UrlTask"
 
-database = Database(DATABASE_URL)
-metadata = MetaData()
+# database = Database(DATABASE_URL)
+# metadata = MetaData()
 
-products = Table(
-    "products",
-    metadata,
-    Column("id", Integer, primary_key=True),
-    Column("ArticleNo",Integer ),  
-    Column("Product", String),
-    Column("inPrice", Integer),
-    Column("Price", Integer),
-    Column("Unit", String),
-    Column("inStock", Integer),
-    Column("Description", String),
-)
+# products = Table(
+#     "products",
+#     metadata,
+#     Column("id", Integer, primary_key=True),
+#     Column("ArticleNo",Integer ),  
+#     Column("Product", String),
+#     Column("inPrice", Integer),
+#     Column("Price", Integer),
+#     Column("Unit", String),
+#     Column("inStock", Integer),
+#     Column("Description", String),
+# )
 
 
 
@@ -38,22 +38,22 @@ app.add_middleware(
 )
 
 # Function to initialize database connection pool
-async def startup():
-    await database.connect()
+# async def startup():
+#     await database.connect()
 
-# Function to close database connection pool
-async def shutdown():
-    await database.disconnect()
+# # Function to close database connection pool
+# async def shutdown():
+#     await database.disconnect()
 
-# Event handlers for startup and shutdown
-app.add_event_handler("startup", startup)
-app.add_event_handler("shutdown", shutdown)
+# # Event handlers for startup and shutdown
+# app.add_event_handler("startup", startup)
+# app.add_event_handler("shutdown", shutdown)
 
 
 
-async def get_products():
-    query = products.select()
-    return await database.fetch_all(query)
+# async def get_products():
+#     query = products.select()
+#     return await database.fetch_all(query)
 
 
 
